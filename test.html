@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="getSize()" onresize="getSize()">
+    <script>
+
+/* Hàm thay đổi và xoá thuộc tính của 1 text
+            function js_style() 
+            {
+                document.getElementById("text").style.fontSize = "14pt";
+                document.getElementById("text").style.fontFamily = "Comic Sans MS";
+                document.getElementById("text").style.color = "green";
+            }
+
+            function js_style2() 
+            {
+                document.getElementById("text").style = '';
+               
+            }
+        */
+
+
+
+/* Hàm set và reset background color cho 1 đoạn text
+            function set_background() {
+            docBody = document.getElementsByTagName("body")[0];
+            myBodyElements = docBody.getElementsByTagName("p");
+            // for ( var i=0 ; i<2 ; i++){
+            //     myp = myBodyElements[i];
+            //     myp.style.background = 'red'
+            // }
+            myp1 = myBodyElements[0];
+            myp1.style.background = "yellow";
+            myp2 = myBodyElements[1];
+            myp2.style.background = "blue";
+
+            myBodyElements = docBody.getElementsByTagName("h2");
+            myh = myBodyElements[0];
+            myh.style.background = "orange";
+
+            myBodyElements = docBody.getElementsByTagName("span");
+            mysp = myBodyElements[0];
+            mysp.style.background = "green"
+        }
+
+            function reset_background() {
+                myp1.style.background = "none";
+                myp2.style.background = "none";
+                myh.style.background = "none";
+                mysp.style.background = "none";
+
+            }
+        */
+        
+
+        
+/* Hàm lấy href, type, hrefland, rel, targer của một thẻ <a>
+            function getAttributes()
+            {
+                var u = document.getElementById("w3r");
+                document.getElementById("sss1").innerHTML = u.rel;
+                document.getElementById("sss2").innerHTML = u.type;
+            }
+        */
+       
+
+
+/* Hàm thêm và xoá cho cột với hàng và sửa nội dung của ô trong table
+             function changeContent()
+            {
+                rn = window.prompt("Input the Row number : ");
+                cn = window.prompt("Input the Column number : ");
+                content = window.prompt("Input the Cell content : ");  
+                var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells;
+                x[parseInt(cn,10)].innerHTML=content;
+            }
+
+            function insert_Row() {
+                var table = document.getElementById("myTable");
+                var newRow = table.insertRow();
+
+                for (var i = 0; i < table.rows[0].cells.length; i++) {
+                    var cell = newRow.insertCell();
+                    cell.innerHTML = "New Cell";
+                }
+            }
+
+            function delete_Row()
+            {
+                var x = document.getElementById("myTable").deleteRow(0)
+                var y = x.deleteCell(0);
+                var z = x.deleteCell(1);
+            }
+
+            function insert_Column() {
+                var table = document.getElementById("myTable");
+                var rows = table.rows;
+
+                for (var i = 0; i < rows.length; i++) {
+                    var cell = rows[i].insertCell(-1);
+                    cell.innerHTML = "New Cell";
+                }
+            }
+
+            function delete_Column()
+            {
+                var x = document.getElementById("myTable")
+                var y = x.rows;
+
+                for (var i = x.rows.length-1 ; i>=0 ; i--) {
+                    y[i].deleteCell(1);
+                }
+            }
+            
+            */
+           
+
+
+/* Hàm tạo table bằng cách nhập hàng và cột và xoá table mới tạo
+            function createTable() {
+                var rn = window.prompt("Enter the number of row :")
+                var cn =  window.prompt("Enter the number of column :")
+
+                for(var r=0 ; r<parseInt(rn,10); r++){
+                    var x = document.getElementById("myTable").insertRow(r)
+                    for(var c=0 ; c<parseInt(cn,10) ; c++){
+                        var y = x.insertCell(c)
+                        y.innerHTML="Row-"+r+ " " + "Column-"+c
+                    }
+                }
+            }
+
+            function deleteTable(){
+
+                const tableElement = document.getElementById("myTable1");
+
+                if (tableElement) {
+                    tableElement.parentNode.removeChild(tableElement);
+                } 
+                else {
+                    const a = document.getElementById("sss")
+                    const mess ="NO TABLE FOUND !!!"
+                    a.innerText = mess
+                }
+            }
+            */
+            
+
+
+/*Hàm add và add all option trong select và remove và remove all(màu)
+            function addColor() {
+                var s1 = document.getElementById("colorAdd")
+                var s2 = document.getElementById("colorRemove")
+                var seletedColor = s1.value;
+
+                const optionExists = Array.from(s2.options).some(
+                    (option) => option.value == seletedColor);
+                
+                if(!optionExists){
+                    const newOption = document.createElement("option");
+                    newOption.value = seletedColor;
+                    newOption.text = newOption.value;
+                    s2.add(newOption);
+                }
+            }
+
+            function addAllColor() {
+                var s1 = document.getElementById("colorAdd")
+                var s2 = document.getElementById("colorRemove")
+                var seletedColor = s1.value;
+
+                for (let i = 0; i < s1.options.length; i++) {
+                    const color = s1.options[i].value;
+                    
+                    // Kiểm tra xem màu đã tồn tại trong "Select 2" hay chưa
+                    const optionExists = Array.from(s2.options).some(
+                    (option) => option.value === color
+                    );
+
+                    // Nếu màu chưa tồn tại trong "Select 2", thêm nó vào
+                    if (!optionExists) {
+                    const newOption = document.createElement("option");
+                    newOption.value = color;
+                    newOption.text = color;
+                    s2.add(newOption);
+                    }
+                }
+            }
+
+
+            function removeColor() {
+                var x=document.getElementById("colorRemove");
+                x.remove(x.selectedIndex);
+            }
+
+            function removeAllColor() {
+                var x=document.getElementById("colorRemove");
+                while(x.options.length > 0){
+                    x.remove(0);
+                }
+            }
+            */
+            
+
+
+/*Hàm tính thể tích khối cầu
+            function volume_sphere() {
+                var radius = Math.abs(document.getElementById("radius").value)
+                var a = ((4/3) * Math.PI * Math.pow(radius,3)).toFixed(4)
+                document.getElementById("volume").value = a
+                var s = "4/3" + " "  + "*"+ " " + "π" + " " + "*" +" "+ radius +"^3" + " " + "=" + " " + a
+                document.getElementById("sss").innerText = s;
+            }
+            */
+            
+
+
+/*Hàm thêm 1 hình ảnh ngẫu nhiên trong mảng đã được nạp sẵn
+            function display_random_image() 
+            {
+                var theImages = [{
+                    src: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+                    width: "300",
+                    height: "200"
+                }, {
+                    src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+                    width: "300",
+                    height: "200"
+                }, {
+                    src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+                    width: "300",
+                    height: "200"
+                }];
+                
+                var preBuffer = [];
+                for (var i = 0, j = theImages.length; i < j; i++) {
+                    preBuffer[i] = new Image();
+                    preBuffer[i].src = theImages[i].src;
+                    preBuffer[i].width = theImages[i].width;
+                    preBuffer[i].height = theImages[i].height;
+                }
+            
+                // create random image number
+                function getRandomInt(min,max) 
+                {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                    // imn = Math.floor(Math.random() * (max - min + 1)) + min;
+                    // return preBuffer[imn];
+                }  
+
+                // 0 is first image,   preBuffer.length - 1) is  last image
+
+                var newImageIndex = getRandomInt(0, preBuffer.length - 1);
+
+
+                var newImageSrc = preBuffer[newImageIndex].src;
+                var newImageWidth = preBuffer[newImageIndex].width;
+                var newImageHeight = preBuffer[newImageIndex].height;
+
+                var imgElement = document.createElement("img");
+                imgElement.src = newImageSrc;
+                imgElement.width = newImageWidth;
+                imgElement.height = newImageHeight;
+                
+                // remove the previous images
+                var images = document.getElementsByTagName("img");
+                var l = images.length;
+                for (var p = 0; p < l; p++) {
+                    images[0].parentNode.removeChild(images[0]);
+                }
+                // display the image  
+                document.body.appendChild(imgElement);
+            }
+            */
+
+            
+
+/*Hàm hightlight <strong> khi lia chuột vào thẻ <a>
+            var boldItems
+            window.onload = getBoldItem()
+
+            function getBoldItem() {
+                boldItems = document.getElementsByTagName("strong")
+            }
+
+            function highlight() {
+                for(var i=0; i<boldItems.length; i++){
+                    boldItems[i].style.background="yellow"
+                }
+            }
+
+            function return_normal() {
+                for(var i=0; i<boldItems.length; i++){
+                    boldItems[i].style.background="none"
+                }
+            }
+            */
+            
+
+
+            function getSize(){
+            var w = document.documentElement.clientWidth;
+            var h = document.documentElement.clientHeight;
+                    
+            document.getElementById('wh').innerHTML = "<h1>Width: " + h + "px" + "<br><br>" + " Height: " + h + "px" + "</h1>";
+            }
+    </script>
+
+<!-- Thêm và xoá cho cột với hàng và sửa nội dung của ô trong table
+              <table id="myTable" border="2" style="border-collapse: collapse;"> 
+                <tr><td>Row1 cell1</td> 
+                <td>Row1 cell2</td></tr> 
+                <tr><td>Row2 cell1</td> 
+                <td>Row2 cell2</td></tr> 
+                <tr><td>Row3 cell1</td> 
+                <td>Row3 cell2</td></tr> 
+            </table>
+
+            <form> <br>
+                <input type="button" onclick="insert_Row()" value="Insert row"> 
+                <input type="button" onclick="delete_Row()" value="Delete row"> <br><br>
+                <input type="button" onclick="insert_Column()" value="Insert column"> 
+                <input type="button" onclick="delete_Column()" value="Delete column"> <br><br>
+                <input type="button" onclick="changeContent()" value="Change content"> 
+            </form>
+    
+        -->
+       
+
+
+<!-- Thay đổi và xoá thuộc tính css của 1 text
+             <p id ='text'>JavaScript Exercises - w3resource</p> 
+            <div>
+                <button id="jsstyle"
+                onclick="js_style()">Style</button>
+                <button id="jsstyle"
+                onclick="js_style2()">Back</button>
+            </div>
+        -->
+        
+
+
+<!-- Set và reset background color cho 1 đoạn text
+            <input type="button" value="Click to set paragraph background color" onclick="set_background()">
+            <input type="button" value="Click to reset paragraph background color" onclick="reset_background()">
+            <h2>yessss sirrrrr</h2>
+            <p>w3resource JavaScript Exercises</p>
+            <p>w3resource PHP Exercises</p> 
+            <span>abcxyz</span>
+        -->
+        
+
+    
+<!-- lấy href, type, hrefland, rel, targer của một thẻ <a>
+            <p><a id="w3r" 
+            type="text/html" 
+            hreflang="en-us" 
+            rel="nofollow" 
+            target="_self" href="https://www.w3resource.com/"
+            >w3resource</a></p> 
+        <button onclick="getAttributes()"
+        >Click here to get the attribute's value</button>  
+        <div id="sss1"><p>1</p></div>
+        <div id="sss2"><p>2</p></div>
+        -->
+        
+
+
+<!-- Tạo table bằng cách nhập hàng và cột và xoá table mới tạo
+            <div id="sss"></div>
+
+        <table 
+            id="myTable" border="2" style="border-collapse: collapse;"> 
+        </table>
+        
+        <form> 
+            <input type="button" onclick="createTable()" value="Create the table"> 
+            <input type="button" onclick="deleteTable()" value="Delete the table">
+        </form>   
+        -->
+        
+
+
+<!--Add và add all option trong select và remove và remove all(màu) 
+            <form>
+            <select id="colorAdd">
+                <option>Green</option>
+                <option>White</option>
+                <option>Black</option>
+                <option>Blue</option>
+                <option>Pink</option>
+                <option>Auqa</option>
+                <option>Yellow</option>
+                <option>Brown</option>
+                <option>Grey</option>
+                <option>Violet</option>
+                <option>Orange</option>
+            </select> 
+            <input type="button" onclick="addColor()" value="Add">
+            <input type="button" onclick="addAllColor()" value="Add all colors">
+
+
+            <select id="colorRemove" style="margin-left: 60px;">
+            </select>
+            <input type="button" onclick="removeColor()" value="Remove">
+            <input type="button" onclick="removeAllColor()" value="Remove all colors">
+
+    
+        </form> 
+        -->
+
+
+
+<!--Tính thể tích khối cầu
+            <p><b>Input radius value and get the volume of a sphere</b></p>
+        <form id="form">
+            Radius : <input type="text" id="radius" required> <br> <br>
+            Volume : <input type="text" id="volume" readonly> <br> <br>
+            <input type="button" value="Calculate" id="calculate" onclick="volume_sphere()">
+        </form>
+        <h3>Description : <br></h3>
+        <div id="sss"></div>
+        -->
+        
+
+
+<!--Thêm 1 hình ảnh ngẫu nhiên trong mảng đã được nạp sẵn
+         <div>
+            <button id="button" onclick="display_random_image()">Show randon image</button>
+        </div>
+        -->
+       
+
+
+<!--Hightlight <strong> khi lia chuột vào thẻ <a>
+        <p>[<a href="#" 
+            onMouseOver="highlight()" 
+            onMouseOut="return_normal()">
+        Highlight the words that are bold</a>]</p> 
+        <p><strong>We</strong> have just started <strong>this</strong> 
+            section for the users (<strong>beginner</strong> 
+            to intermediate) who <strong>want</strong> 
+            to work with <strong>various</strong> 
+            JavaScript <strong>problems</strong> 
+            and write scripts online to <strong>test</strong> 
+            their JavaScript <strong>skill</strong>.</p>
+        -->
+        
+
+
+        <div id="wh"> 
+            <!-- Place height and width size here! --> 
+        </div>
+</body>
+</html>
